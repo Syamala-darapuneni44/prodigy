@@ -1,0 +1,113 @@
+/* styles.css */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f3e9; /* Light beige background */
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+#navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Space between name and menu */
+    background-color: #6c4f4f; /* Dark brown background */
+    padding: 10px 20px;
+}
+
+.bakery-name {
+    color: #fff; /* White text color for bakery name */
+    font-size: 24px; /* Larger font size for visibility */
+}
+
+#navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#navbar li {
+    display: inline; /* Inline items for horizontal menu */
+}
+
+#navbar a {
+    color: #f2f2f2; /* Light gray text color */
+    text-decoration: none;
+    padding: 14px 20px;
+}
+
+#navbar a:hover {
+    background-color: #d9b89c; /* Light brown on hover */
+}
+
+/* Change navbar color on scroll */
+.scrolled {
+    background-color: #5b3e3e; /* Darker brown when scrolled */
+}
+
+/* Content styling */
+.content {
+    padding-top: 70px; /* Space for fixed navbar */
+}
+
+section {
+    padding: 50px;
+}
+
+h1, h2 {
+    color: #6c4f4f; /* Dark brown for headings */
+}
+
+p {
+    color: #666; /* Gray text for paragraphs */
+}
+
+.main-image {
+    width: 60%; /* Adjusted width for better alignment */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* About section image gallery styling */
+.image-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr)); /* Responsive grid layout */
+    gap: 15px; /* Space between images */
+}
+
+.image-gallery img {
+    width: 60%; /* Make images responsive and same size */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Menu items styling */
+.menu-items {
+    display: flex;
+    flex-wrap: wrap; /* Wrap items to next line if needed */
+}
+
+.menu-item {
+   flex-basis: calc(33.33% - 20px); /* Three items per row with spacing */
+   margin-right: 10px; /* Space between items */
+   text-align: center; /* Center align text under images */
+}
+
+.menu-item img {
+   width: 60%; /* Make images responsive within menu items and same size */
+   height: 50; /* Maintain aspect ratio */
+}
+
+/* Remove margin from last item in each row */
+.menu-item:nth-child(3n) {
+   margin-right: 0; 
+}
+
+/* Menu list styling (if needed) */
+.menu-list {
+   list-style-type: none; /* Remove bullets from menu list */
+}

@@ -1,0 +1,147 @@
+/* styles.css */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4; /* Light background color */
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+#navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Space between title and menu */
+    background-color: #333; /* Dark background for navbar */
+    padding: 10px 20px;
+}
+
+.site-title {
+    color: #fff; /* White text color for site title */
+    font-size: 24px; /* Larger font size for visibility */
+}
+
+#navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#navbar li {
+    display: inline; /* Inline items for horizontal menu */
+}
+
+#navbar a {
+    color: #f2f2f2; /* Light gray text color */
+    text-decoration: none;
+    padding: 14px 20px;
+}
+
+#navbar a:hover {
+    background-color: #575757; /* Darker gray on hover */
+}
+
+/* Hero Section Styling */
+.hero {
+    background-image: url('hero-background.jpg'); /* Replace with your hero image */
+    background-size: cover;
+    background-position: center;
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content {
+    color: white; /* White text color for hero content */
+    text-align: center; /* Center align text */
+}
+
+.hero-description {
+   color: black; /* Set the description text color to black */
+   font-size: 20px; /* Adjust font size as needed */
+   margin-top: 10px; /* Space above the description */
+}
+
+.cta-button {
+   background-color: #ff5722; /* Button color */
+   color: white; /* Button text color */
+   padding: 10px 20px; 
+   border-radius: 5px; 
+   text-decoration: none; 
+   transition: background-color 0.3s ease; 
+}
+
+.cta-button:hover {
+   background-color: #e64a19; /* Darker shade on hover */
+}
+
+/* Content styling */
+.content {
+   padding-top: 70px; /* Space for fixed navbar */
+   padding-bottom: 50px; /* Space at the bottom of the content */
+}
+
+section {
+   padding: 50px;
+}
+
+h1, h2 {
+   color: #333; /* Dark color for headings */
+}
+
+/* About Section Styling */
+.about-content {
+   display: flex;
+   align-items: center; /* Align items vertically centered */
+}
+
+.profile-photo {
+   width: 150px; /* Adjust size as needed */
+   border-radius: 50%; /* Circular profile photo */
+   margin-right: 20px; /* Space between photo and text */
+}
+
+.about-text p {
+   margin-bottom: 15px; /* Space between paragraphs in about me section */
+}
+
+/* Projects Section Styling */
+.project-list {
+   display: flex;
+   flex-wrap: wrap; /* Wrap items to next line if needed */
+}
+
+.project-item {
+   flex-basis: calc(33.33% - 20px); /* Three items per row with spacing */
+   margin-right: 10px; /* Space between items */
+   text-align: center; /* Center align text under images */
+   background-color: #fff; /* White background for project items */
+   border-radius: 5px; /* Rounded corners */
+   padding: 15px; /* Padding inside project items */
+   box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow effect */
+}
+
+.project-item img {
+   width: 100%; /* Make images responsive within project items */
+   height: auto; /* Maintain aspect ratio */
+}
+
+/* Remove margin from last item in each row */
+.project-item:nth-child(3n) {
+   margin-right: 0; 
+}
+
+/* Contact Section Styling */
+#contact p {
+   margin-bottom: 10px; /* Space between paragraphs in contact section */
+}

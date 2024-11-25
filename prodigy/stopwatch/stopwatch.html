@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stopwatch with Auto Lap Display</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(135deg, #4b79a1, #283e51);
+      font-family: Arial, sans-serif;
+      color: #ffffff;
+    }
+
+    .stopwatch-container {
+      text-align: center;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+      width: 320px;
+    }
+
+    .stopwatch {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: #ffdd57;
+      letter-spacing: 2px;
+      transition: color 0.3s ease;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 15px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+      outline: none;
+      transition: transform 0.2s ease, background-color 0.3s ease;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+    }
+
+    .start {
+      background-color: #4caf50;
+    }
+
+    .stop {
+      background-color: #f44336;
+    }
+
+    .reset {
+      background-color: #ff9800;
+    }
+
+    button:active {
+      transform: scale(0.9);
+    }
+
+    .animate {
+      animation: pulse 1s ease infinite alternate;
+    }
+
+    @keyframes pulse {
+      from {
+        color: #ffdd57;
+      }
+      to {
+        color: #ffd700;
+      }
+    }
+
+    .lap-list {
+      margin-top: 10px;
+      text-align: left;
+      max-height: 150px;
+      overflow-y: auto;
+      padding: 10px;
+      border-top: 1px solid #ffdd57;
+    }
+
+    .lap-item {
+      font-size: 1rem;
+      margin-bottom: 5px;
+      color: #e0e0e0;
+    }
+    
+    .lap-button {
+        background-color: #2196F3; 
+        margin-left: 10px; 
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="stopwatch-container">
+    <div class="stopwatch">00:00:00.00</div>
+    <div class="buttons">
+      <button class="start">Start</button>
+      <button class="stop">Stop</button>
+      <button class="lap-button">Lap</button> 
+      <button class="reset">Reset</button>
+    </div>
+    <div class="lap-list"></div>
+  </div>
+
+<script>
+let hours = 0, minutes = 0, seconds = 0, milliseconds = 0; 
+let interval; 
+let lapTimes = []; 
+const display = document.querySelector('.stopwatch'); 
+const lapList = document.querySelector('.lap-list'); 
+const startButton = document.querySelector('.start'); 
+const stopButton = document.querySelector('.stop'); 
+const resetButton = document.querySelector('.reset'); 
+const lapButton = document.querySelector('.lap-button'); 
+
+function updateDisplay() { 
+   const hoursText = hours.toString().padStart(2, '0'); 
+   const minutesText = minutes.toString().padStart(2, '0'); 
+   const secondsText = seconds.toString().padStart(2, '0'); 
+   const millisecondsText = milliseconds.toString().padStart(2, '0'); 
+   display.textContent = `${hoursText}:${minutesText}:${secondsText}.${millisecondsText}`; 
+}
+
+function startStopwatch() { 
+   interval = setInterval(() => { 
+       milliseconds += 1; 
+       if (milliseconds === 100) { 
+           milliseconds = 0; 
+           seconds += 1; 
+       } 
+       if (seconds === 60) { 
+           seconds = 0; 
+           minutes += 1; 
+       } 
+       if (minutes === 60) { 
+           minutes = 0; 
+           hours += 1; 
+       } 
+       updateDisplay(); 
+   }, 10); 
+   display.classList.add('animate'); 
+}
+
+startButton.addEventListener('click', () => { 
+   clearInterval(interval); 
+   startStopwatch(); 
+});
+
+stopButton.addEventListener('click', () => { 
+   clearInterval(interval); 
+   display.classList.remove('animate'); 
+});
+
+lapButton.addEventListener('click', () => { 
+   if (interval) { 
+       const lapTime = display.textContent; 
+       lapTimes.push(lapTime); 
+       const lapItem = document.createElement('div');
+       lapItem.className = 'lap-item';
+       lapItem.textContent = `Lap ${lapTimes.length}: ${lapTime}`;
+       lapList.appendChild(lapItem);
+   }
+});
+
+resetButton.addEventListener('click', () => { 
+   clearInterval(interval); 
+   hours = minutes = seconds = milliseconds = 0; 
+   updateDisplay(); 
+   display.classList.remove('animate'); 
+   lapList.innerHTML = ''; 
+   lapTimes = []; 
+});
+
+updateDisplay(); 
+</script>
+</body>
+</html>
